@@ -1,0 +1,17 @@
+{
+    "autosave": 2,
+    "basename": true,
+    "colorcolumn": 79,
+    "colorscheme": "twilight",
+    "divreverse": false,
+    "linter": false,
+    "mkparents": true,
+    "parsecursor": true,
+    "reload": "auto",
+    "savecursor": true,
+    "saveundo": true,
+    "scrollbar": true,
+    "statusformatl": " $(modified)$(filename):$(line):$(col)$(status.paste) | $(opt:filetype)",
+    "statusformatr": "$(opt:fileformat) | $(opt:encoding) ",
+    "tabmovement": true
+}

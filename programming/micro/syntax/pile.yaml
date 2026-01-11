@@ -1,0 +1,34 @@
+filetype: pile
+
+detect:
+    filename: "\\.pile$"
+
+rules:  
+    - statement: "\\b(import|array|def|end|break|continue|if|else|for|as|let|proc|loop|return)\\b"
+    - symbol: "\\b(dup|drop|swap|over|rot)\\b"
+    - constant: "\\b(false|nil|true)\\b"
+    # - type: "\\b(Array|Int|Float|String)\\b"
+    - special: "\\b(print|println|eprint|eprintln|input|inputln)\\b"
+    - special: "\\b(exit|chr|ord|tofloat|typeof|len)\\b"
+
+    - constant.number: "\\b((0[xX](([0-9A-Fa-f]+\\.[0-9A-Fa-f]*)|(\\.?[0-9A-Fa-f]+))([pP][-+]?[0-9]+)?)|((([0-9]+\\.[0-9]*)|(\\.?[0-9]+))([eE][-+]?[0-9]+)?))"
+
+    - constant.string:
+        start: "\""
+        end: "\""
+        skip: "\\\\."
+        rules:
+            - constant.specialChar: "\\\\([abfnrtvz\\'\"]|[0-9]{1,3}|x[0-9a-fA-F][0-9a-fA-F]|u\\{[0-9a-fA-F]+\\})"
+
+    - constant.string:
+        start: "\""
+        end: "\""
+        skip: "\\\\."
+        rules:
+            - constant.specialChar: "\\\\([abfnrtvz\"]|[0-9]{1,3}|x[0-9a-fA-F][0-9a-fA-F]|u\\{[0-9a-fA-F]+\\})"
+
+    - comment:
+        start: "#"
+        end: "$"
+        rules:
+            - todo: "(TODO|NOTE|FIXME):?"

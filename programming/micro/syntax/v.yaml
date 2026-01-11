@@ -1,0 +1,48 @@
+filetype: v
+
+detect:
+    filename: "\\.v$"
+
+rules:
+    # function definition
+    - identifier: "fn [a-z0-9_]+"
+
+      # Reserved words
+    - statement: "\\b(as|asm|assert|atomic|break|const|continue|defer|else|enum|false|fn|for|go|goto|if|implements|import|in|interface|is|isreftype|lock|match|module|mut|none|or|pub|return|rlock|select|shared|sizeof|spawn|static|struct|true|type|typeof|union|unsafe|volatile|__global|__offsetof)\\b"
+
+      # Constants
+    - constant: "\\b[A-Z][A-Z_0-9]+\\b"
+
+    - special: "\\b(eprint|eprintln|println|print|exit|panic|print_backtrace)\\b"
+
+      # Numbers
+    - constant.number: "\\b[0-9]+\\b"
+
+      # Booleans
+    - constant: "\\b(true|false)\\b"
+
+      # Enums/Structs/Types/etc.
+    - type: "\\b[A-Z]+[a-zA-Z_0-9]*[a-z]+[a-zA-Z_0-9]*\\b"
+
+      # Builtin types
+    - type: "\\b(voidptr|rune|bool|str|int|((i|u)(size|8|16|32|64))|f32|f64|string)\\b"
+
+    - constant.string:
+        start: "\'"
+        end: "\'"
+        skip: '\\.'
+        rules:
+            - constant.specialChar: '\\.'
+    
+    - constant.string:
+        start: "`"
+        end: "`"
+        skip: '\\.'
+        rules:
+            - constant.specialChar: '\\.'
+    
+    - comment:
+        start: "//"
+        end: "$"
+        rules:
+            - todo: "(TODO|XXX|FIXME):?"
