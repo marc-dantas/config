@@ -119,7 +119,7 @@
   "scrollbar": {
     "show": "auto"
   },
-  "relative_line_numbers": false,
+  "relative_line_numbers": "disabled",
   "gutter": {
     "min_line_number_digits": 1,
     "folds": false,
@@ -156,5 +156,5 @@
   "buffer_font_family": "Iosevka",
   "autosave": "on_focus_change",
   "buffer_line_height": "standard",
-  "theme": "Github Dark"
+  "theme": "GitHub Dark"
 }
